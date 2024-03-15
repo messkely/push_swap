@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:26:24 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/15 09:55:39 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:05:36 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int		ft_lstsize(t_list *lst);
 void	short_sort(t_list **a);
 int		get_major_index(t_list *lst);
 void	indexing_stack(t_list **lst);
+void	push_a_to_b(t_list **a, t_list **b, int delimeter);
+int	ft_check_stack(t_list *b, int index);
+void	turn_to_a(t_list **a, t_list **b);
 
 void	swap(t_list **head);
 void	sa(t_list **a);

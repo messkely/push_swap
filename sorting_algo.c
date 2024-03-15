@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 22:37:01 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/15 12:56:32 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:07:10 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	short_sort(t_list **a)
 		sa(a);
 }
 
-void	long_sort(t_list **a, t_list **b)
-{
-	void
-}
+// void	long_sort(t_list **a, t_list **b)
+// {
+// 	void
+// }
 
 void	push_a_to_b(t_list **a, t_list **b, int delimeter)
 {
@@ -96,7 +96,7 @@ void	push_a_to_b(t_list **a, t_list **b, int delimeter)
 	}
 }
 
-int	ft_check(t_list *b, int index)
+int	ft_check_stack(t_list *b, int index)
 {
 	int		size;
 	int		i;
@@ -119,7 +119,7 @@ void	turn_to_a(t_list **a, t_list **b)
 {
 	int	max_index;
 
-	max_index = get_higher_index(*b);
+	max_index = get_major_index(*b);
 	while (ft_lstsize(*b) > 0)
 	{
 		if (*b && (*b)->index == max_index)
@@ -135,7 +135,7 @@ void	turn_to_a(t_list **a, t_list **b)
 		}
 		else
 		{
-			if (!ft_check(*b, max_index))
+			if (!ft_check_stack(*b, max_index))
 				rrb(b);
 			else
 				rb(b);
@@ -149,8 +149,15 @@ void	ft_sort_stack(t_list **a, t_list **b)
 	if (ft_lstsize(*a) == 2)
 		sa(a);
 	else if (ft_lstsize(*a) == 3)
-		sort_3(a);
+		short_sort(a);
 	else
-		long_sort(a, b);
+	{
+		if (ft_lstsize(*a) <= 100)
+			push_a_to_b(a, b, 10);
+		else if (ft_lstsize(*a) >= 100)
+			push_a_to_b(a, b, 30);
+		turn_to_a(a, b);
+	}
+		
 }
   
