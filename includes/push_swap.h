@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:26:24 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/11 00:07:11 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/15 09:55:39 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
-// # include "../lib/libft/libft.h"
 
 typedef struct d_list
 {
@@ -47,8 +46,11 @@ char	**ft_check_error(int ac, char **av);
 
 void	ft_fill_stack(char **av, t_list **lst);
 int		is_sorted(t_list *lst);
-void	ft_sort_stack(t_list **stack_a, t_list **stack_b);
+void	ft_sort_stack(t_list **a, t_list **b);
 int		ft_lstsize(t_list *lst);
+void	short_sort(t_list **a);
+int		get_major_index(t_list *lst);
+void	indexing_stack(t_list **lst);
 
 void	swap(t_list **head);
 void	sa(t_list **a);
