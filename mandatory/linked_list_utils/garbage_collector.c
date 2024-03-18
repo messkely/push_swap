@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   garbage_collector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 08:47:30 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/15 09:50:25 by messkely         ###   ########.fr       */
+/*   Created: 2024/03/17 11:53:47 by messkely          #+#    #+#             */
+/*   Updated: 2024/03/17 11:54:34 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	main(int ac, char *av[])
+void	free_stack(t_list *stack)
 {
-	char	**arr;
-	t_list	*a;
-	t_list	*b;
+	t_list	*tmp;
 
-	a = NULL;
-	b = NULL;
-	if (ac > 1)
+	while (stack)
 	{
-		arr = ft_check_error(ac, av);
-		ft_isduplicat(arr);
-		ft_fill_stack(arr, &a);
-		if (is_sorted(a))
-			ft_error();
-		indexing_stack(&a);
-		ft_sort_stack(&a, &b);
-		printList(a);
-		free_stack(a);
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
 	}
-	return (0);
+	stack = NULL;
+}
+
+void	ft_broom(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }

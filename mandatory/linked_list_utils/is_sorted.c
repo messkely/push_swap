@@ -1,44 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 09:06:23 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/17 15:11:38 by messkely         ###   ########.fr       */
+/*   Created: 2024/03/17 12:03:25 by messkely          #+#    #+#             */
+/*   Updated: 2024/03/17 12:03:52 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	swap(t_list **lst)
+int	is_sorted(t_list *lst)
 {
-	t_list	*tmp;
-
-	if (*lst && (*lst)->next)
+	if (!lst)
+		return (0);
+	while (lst->next)
 	{
-		tmp = (*lst)->next;
-		(*lst)->next = tmp->next;
-		ft_add_front(lst, tmp);
+		if (lst->data > lst->next->data)
+			return (0);
+		lst = lst->next;
 	}
-}
-
-void	sa(t_list **a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_list **b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_list **a, t_list **b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:42:26 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/11 00:10:39 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/17 10:31:05 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,24 @@
 
 void	push(t_list **dest, t_list **src)
 {
-	t_list	*top_node;
+	t_list	*tmp;
 
-	if (!(*src))
+	tmp = *src;
+	if (*src == NULL)
 		return ;
-	top_node = *src;
 	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = 0;
-	if (*dest)
-	{
-		top_node->next = *dest;
-		*dest = top_node;
-		(*dest)->next->prev = *dest;
-	}
-	else
-	{
-		top_node->next = 0;
-		*dest = top_node;
-	}
+	tmp->next = NULL;
+	ft_add_front(dest, tmp);
 }
 
 void	pa(t_list **a, t_list **b)
 {
-	push(a, b);
 	write(1, "pa\n", 3);
+	push(a, b);
 }
 
-void	pb(t_list **b, t_list **a)
+void	pb(t_list **a, t_list **b)
 {
-	push(b, a);
 	write(1, "pb\n", 3);
+	push(b, a);
 }

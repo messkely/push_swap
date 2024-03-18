@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Doubly_linked_list_lib.c                           :+:      :+:    :+:   */
+/*   linked_list_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:51:11 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/16 14:06:04 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:55:44 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_add_new_node(int data)
 	if (!new)
 		return (NULL);
 	new->data = data;
+	new->index = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -64,25 +65,4 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
-}
-
-void	printList(t_list *head)
-{
-	while (head)
-	{
-		printf("%d ",head->data);
-		head = head->next;
-	}
-	printf("\n");
-}
-
-int main()
-{
-	t_list *head = ft_add_new_node(18);
-	ft_add_back(&head, ft_add_new_node(19));
-	ft_add_back(&head, ft_add_new_node(20));
-	ft_add_front(&head, ft_add_new_node(17));
-
-	printList(head);
-	printf("%d\n",ft_lstsize(head));
 }

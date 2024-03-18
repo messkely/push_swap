@@ -6,24 +6,26 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 22:46:51 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/11 00:10:50 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:10:43 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	rev_rotate(t_list **head)
+void	rev_rotate(t_list **lst)
 {
-	t_list	*last_node;
+	t_list	*head;
+	t_list	*last;
 
-	if (!(*head) || !(*head)->next)
+	if (!(*lst) || !(*lst)->next)
 		return ;
-	last_node = ft_lastNode(*head);
-	last_node->prev->next = 0;
-	last_node->next = *head;
-	(*head)->prev = last_node;
-	*head = last_node;
-	(*head)->prev = 0;
+	head = *lst;
+	last = ft_last_node(*lst);
+	while (head->next->next != NULL)
+		head = head->next;
+	head->next = NULL;
+	last->next = (*lst);
+	(*lst) = last;
 }
 
 void	rra(t_list **a)

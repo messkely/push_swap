@@ -1,55 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parssing_utils.c                                   :+:      :+:    :+:   */
+/*   parssing_utils_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 01:49:28 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/10 22:26:50 by messkely         ###   ########.fr       */
+/*   Created: 2024/03/16 12:03:25 by messkely          #+#    #+#             */
+/*   Updated: 2024/03/17 16:51:50 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
-}
-
-int	ft_isspace(char c)
-{
-	return ((c >= 9 && c <= 13) || c == ' ');
-}
-
-int	ft_isempty(const char *str)
-{
-	if (!str)
-		return (1);
-	while (*str != '\0')
-	{
-		if (!ft_isspace((unsigned char)*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-void	ft_error(void)
-{
-	write(1, "Error", 5);
-	exit(1);
-}
+#include "../includes/push_swap.h"
 
 long	ft_atoi(const char *str)
 {
@@ -124,25 +85,14 @@ void	ft_isduplicat(char **str)
 	}
 }
 
-void	ft_broom(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-}
-
-char	**ft_check_error(int ac, char **av)
+char	*ft_check_error(int ac, char **av)
 {
 	int		i;
 	int		j;
-	char	*r1;
-	char	**r2;
+	char	*buff;
 
 	i = 1;
-	r1 = "";
+	buff = "";
 	while (i < ac)
 	{
 		if (!ft_isempty(av[i]))
@@ -156,49 +106,22 @@ char	**ft_check_error(int ac, char **av)
 					ft_error();
 				j++;
 			}
-			r1 = ft_strjoin(r1, av[i++]);
-			r1 = ft_strjoin(r1, " ");
+			buff = ft_strjoin(buff, av[i++]);
+			buff = ft_strjoin(buff, " ");
 		}
 		else
 			ft_error();
 	}
-	r2 = ft_split(r1, ' ');
-	free(r1);
-	return (r2);
+	return (buff);
 }
 
-void	ft_fill_stack(char **arr, t_list **lst)
+char	**ft_parssing(int ac, char **av)
 {
-	int	i;
+	char	*buff;
+	char	**res;
 
-	i = 0;
-	while (arr[i])
-		ft_addBack(lst, ft_addNewNode(ft_atoi(arr[i++])));
-	ft_broom(arr);
-}
-
-void	free_stack(t_list *stack)
-{
-	t_list	*tmp;
-
-	while (stack)
-	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
-	}
-	stack = NULL;
-}
-
-int	is_sorted(t_list *lst)
-{
-	if (!lst)
-		return (0);
-	while (lst->next)
-	{
-		if (lst->data > lst->next->data)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
+	buff = "";
+	buff = ft_check_error(ac, av);
+	res = ft_split(buff, ' ');
+	return (free(buff), res);
 }

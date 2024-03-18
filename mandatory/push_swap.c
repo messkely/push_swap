@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 09:06:23 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/17 15:11:38 by messkely         ###   ########.fr       */
+/*   Created: 2024/02/21 08:47:30 by messkely          #+#    #+#             */
+/*   Updated: 2024/03/18 16:46:54 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-void	swap(t_list **lst)
+int	main(int ac, char **av)
 {
-	t_list	*tmp;
+	char	**arr;
+	t_list	*a;
+	t_list	*b;
 
-	if (*lst && (*lst)->next)
+	a = NULL;
+	b = NULL;
+	if (ac > 1)
 	{
-		tmp = (*lst)->next;
-		(*lst)->next = tmp->next;
-		ft_add_front(lst, tmp);
+		arr = ft_parssing(ac, av);
+		ft_isduplicat(arr);
+		ft_fill_stack(arr, &a);
+		if (is_sorted(a))
+			ft_error();
+		indexing_stack(&a);
+		ft_sort_stack(&a, &b);
+		print_list(a);
+		free_stack(a);
 	}
-}
-
-void	sa(t_list **a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_list **b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_list **a, t_list **b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	return (0);
 }

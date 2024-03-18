@@ -6,13 +6,13 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 23:02:50 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/09 02:31:35 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:06:29 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int isEmpty(const char *str)
+int	is_empty(const char *str)
 {
     if (!str)
         return 1;

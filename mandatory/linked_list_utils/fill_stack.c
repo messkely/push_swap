@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 09:06:23 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/17 15:11:38 by messkely         ###   ########.fr       */
+/*   Created: 2024/03/17 11:51:11 by messkely          #+#    #+#             */
+/*   Updated: 2024/03/18 15:56:01 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	swap(t_list **lst)
+void	ft_fill_stack(char **arr, t_list **lst)
 {
-	t_list	*tmp;
+	int	i;
 
-	if (*lst && (*lst)->next)
-	{
-		tmp = (*lst)->next;
-		(*lst)->next = tmp->next;
-		ft_add_front(lst, tmp);
-	}
-}
-
-void	sa(t_list **a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_list **b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_list **a, t_list **b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	i = 0;
+	while (arr[i])
+		ft_add_back(lst, ft_add_new_node(ft_atoi(arr[i++])));
+	ft_broom(arr);
 }
