@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 10:26:24 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/19 09:05:24 by messkely         ###   ########.fr       */
+/*   Created: 2024/03/19 09:10:10 by messkely          #+#    #+#             */
+/*   Updated: 2024/03/19 10:34:31 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include "../lib/get_next_line/get_next_line.h"
 # include <limits.h>
 
 typedef struct d_list
@@ -30,31 +29,24 @@ t_list	*ft_last_node(t_list *head);
 void	ft_add_back(t_list **head, t_list *new);
 void	ft_add_front(t_list **head, t_list *new);
 int		ft_lstsize(t_list *lst);
-void	print_list(t_list *head);
 
 size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 int		ft_isspace(char c);
 int		ft_isempty(const char *str);
 long	ft_atoi(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoinn(char const *s1, char const *s2);
 char	**ft_split(const char *s, char c);
 void	ft_error(void);
 void	ft_isduplicat(char **str);
 char	*ft_check_error(int ac, char **av, char *buff);
 char	**ft_parssing(int ac, char **av);
+int		ft_strcmp(char *s1, char *s2);
+void	ft_check_moves(char *str, t_list **a, t_list **b);
+void	check_instructions(t_list **a, t_list **b);
 
 void	ft_fill_stack(char **av, t_list **lst);
 int		is_sorted(t_list *lst);
-void	ft_sort_stack(t_list **a, t_list **b);
-void	sort_3(t_list **a);
-void	sort_4(t_list **a, t_list **b);
-void	sort_5(t_list **a, t_list **b);
-int		get_major_index(t_list *lst);
-void	indexing_stack(t_list **lst);
-void	push_a_to_b(t_list **a, t_list **b, int delimeter);
-int		ft_check_stack(t_list *b, int index);
-void	return_to_a(t_list **a, t_list **b);
 
 void	swap(t_list **lst);
 void	sa(t_list **a);

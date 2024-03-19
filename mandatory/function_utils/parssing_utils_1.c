@@ -6,11 +6,11 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 01:49:28 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/17 15:08:07 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:59:26 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 size_t	ft_strlen(const char *s)
 {

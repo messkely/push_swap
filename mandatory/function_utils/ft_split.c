@@ -6,11 +6,11 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 02:42:20 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/17 15:07:54 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:59:08 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static int	ft_check(char s, char c)
 {

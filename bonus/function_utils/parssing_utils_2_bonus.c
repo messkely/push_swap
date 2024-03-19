@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parssing_utils_2.c                                 :+:      :+:    :+:   */
+/*   parssing_utils_2_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:03:25 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/17 16:51:50 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:15:23 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/checker.h"
 
 long	ft_atoi(const char *str)
 {
@@ -38,7 +38,7 @@ long	ft_atoi(const char *str)
 	return (sign * res);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoinn(char const *s1, char const *s2)
 {
 	char	*ptr;
 	size_t	i;
@@ -85,14 +85,12 @@ void	ft_isduplicat(char **str)
 	}
 }
 
-char	*ft_check_error(int ac, char **av)
+char	*ft_check_error(int ac, char **av, char *buff)
 {
 	int		i;
 	int		j;
-	char	*buff;
 
 	i = 1;
-	buff = "";
 	while (i < ac)
 	{
 		if (!ft_isempty(av[i]))
@@ -106,8 +104,8 @@ char	*ft_check_error(int ac, char **av)
 					ft_error();
 				j++;
 			}
-			buff = ft_strjoin(buff, av[i++]);
-			buff = ft_strjoin(buff, " ");
+			buff = ft_strjoinn(buff, av[i++]);
+			buff = ft_strjoinn(buff, " ");
 		}
 		else
 			ft_error();
@@ -121,7 +119,7 @@ char	**ft_parssing(int ac, char **av)
 	char	**res;
 
 	buff = "";
-	buff = ft_check_error(ac, av);
+	buff = ft_check_error(ac, av, buff);
 	res = ft_split(buff, ' ');
 	return (free(buff), res);
 }

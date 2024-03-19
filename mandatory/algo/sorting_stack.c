@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 22:37:01 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/18 16:00:59 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:40:10 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,30 @@ void	indexing_stack(t_list **lst)
 {
 	int		index;
 	t_list	*tmp;
-	t_list	*max_n;
-	int		max_v;
+	t_list	*major_node;
+	int		major_value;
 
 	tmp = NULL;
 	index = ft_lstsize(*lst) - 1;
 	while (index)
 	{
 		tmp = *lst;
-		max_v = INT_MIN;
+		major_value = INT_MIN;
 		while (tmp)
 		{
-			if (tmp->data > max_v && tmp->index == 0)
+			if (tmp->data > major_value && tmp->index == 0)
 			{
-				max_v = tmp->data;
-				max_n = tmp;
+				major_value = tmp->data;
+				major_node = tmp;
 			}
 			tmp = tmp->next;
 		}
-		max_n->index = index;
+		major_node->index = index;
 		index--;
 	}
 }
 
-void	short_sort(t_list **a)
+void	sort_3(t_list **a)
 {
 	int	higher;
 
@@ -52,12 +52,63 @@ void	short_sort(t_list **a)
 		sa(a);
 }
 
+void	sort_4(t_list **a, t_list **b)
+{
+	int	min_index;
+
+	min_index = 0;
+	while (ft_lstsize(*a) > 3)
+	{
+		if ((*a)->index == min_index)
+			pb(a, b);
+		else if ((*a)->next->index == min_index)
+		{
+			sa(a);
+			pb(a, b);
+		}
+		else
+			rra(a);
+	}
+	sort_3(a);
+	pa(a, b);
+}
+
+void	sort_5(t_list **a, t_list **b)
+{
+	int	min_index;
+
+	min_index = 0;
+	while (ft_lstsize(*a) > 3)
+	{
+		if ((*a)->index == min_index)
+		{
+			pb(a, b);
+			min_index++;
+		}
+		else if ((*a)->next->index == min_index)
+		{
+			sa(a);
+			pb(a, b);
+			min_index++;
+		}
+		else
+			rra(a);
+	}
+	sort_3(a);
+	pa(a, b);
+	pa(a, b);
+}
+
 void	ft_sort_stack(t_list **a, t_list **b)
 {
 	if (ft_lstsize(*a) == 2)
 		sa(a);
 	else if (ft_lstsize(*a) == 3)
-		short_sort(a);
+		sort_3(a);
+	else if (ft_lstsize(*a) == 4)
+		sort_4(a, b);
+	else if (ft_lstsize(*a) == 5)
+		sort_5(a, b);
 	else
 	{
 		if (ft_lstsize(*a) <= 100)
