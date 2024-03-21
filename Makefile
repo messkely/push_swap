@@ -35,15 +35,16 @@ OBJS_BONUS = $(FILES_BONUS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 CC = cc
 RM = rm -f
-
-all : $(NAME)
-bonus : $(NAME_BONUS)
-
 $(NAME) : $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
-$(NAME_BONUS) : $(OBJS_BONUS)
-	$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
 
+# $(NAME_BONUS) : $(OBJS_BONUS)
+# 	$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
+all : $(NAME)
+# bonus : $(NAME_BONUS)
+
+bonus : $(OBJS_BONUS)
+	$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
 %.o : %.c includes/push_swap.h
 	$(CC) $(FLAGS) -c $< -o $@
 %.o : %.c includes/checker.h
@@ -63,6 +64,6 @@ mk : re bonus
 
 test: mk
 	@echo "Running visualization script..."
-	./visualizer-1_1.py $$(seq 0 4 | sort -R)
+	./visualizer-1_1.py $$(seq 0 100 | sort -R)
 
 .PHONY : clean

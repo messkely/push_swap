@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:47:16 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/18 15:45:52 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/20 22:39:47 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_check_stack(t_list *b, int index)
 	size = ft_lstsize(b);
 	i = 0;
 	tmp = b;
-	while (i < size / 2 && tmp)
+	while (i < (size / 2) && tmp)
 	{
 		if (index == tmp->index)
 			return (1);

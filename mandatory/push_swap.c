@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:47:30 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/18 16:46:54 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:35:29 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 		ft_isduplicat(arr);
 		ft_fill_stack(arr, &a);
 		if (is_sorted(a))
-			ft_error();
+			exit(0);
 		indexing_stack(&a);
 		ft_sort_stack(&a, &b);
 		print_list(a);
