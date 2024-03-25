@@ -6,14 +6,13 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:10:10 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/19 10:34:31 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/22 00:36:24 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include <stdio.h>
 # include "../lib/get_next_line/get_next_line.h"
 # include <limits.h>
 
@@ -35,13 +34,14 @@ int		ft_isdigit(int c);
 int		ft_isspace(char c);
 int		ft_isempty(const char *str);
 long	ft_atoi(const char *str);
-char	*ft_strjoinn(char const *s1, char const *s2);
 char	**ft_split(const char *s, char c);
 void	ft_error(void);
 void	ft_isduplicat(char **str);
-char	*ft_check_error(int ac, char **av, char *buff);
+char	*ft_strjoinn(char *s1, char *s2);
+void	ft_check_error(char *av);
 char	**ft_parssing(int ac, char **av);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_check_is_sorted(t_list *a);
 void	ft_check_moves(char *str, t_list **a, t_list **b);
 void	check_instructions(t_list **a, t_list **b);
 

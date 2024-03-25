@@ -6,11 +6,16 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:47:30 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/21 15:35:29 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:42:43 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void leaks()
+{
+	system("leaks push_swap");
+}
 
 int	main(int ac, char **av)
 {
@@ -18,6 +23,7 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 
+	atexit(leaks);
 	a = NULL;
 	b = NULL;
 	if (ac > 1)
@@ -29,7 +35,6 @@ int	main(int ac, char **av)
 			exit(0);
 		indexing_stack(&a);
 		ft_sort_stack(&a, &b);
-		print_list(a);
 		free_stack(a);
 	}
 	return (0);

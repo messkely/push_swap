@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:23:54 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/19 11:12:18 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/22 00:36:14 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,27 @@ void	check_instructions(t_list **a, t_list **b)
 	free_stack(*b);
 }
 
+void	ft_check_is_sorted(t_list *a)
+{
+	if (is_sorted(a))
+		exit(0);
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*b;
 	char	*str;
+	char	**arr;
 
 	if (ac == 1)
 		return (0);
 	if (read(0, NULL, 0) < 0)
 		ft_error();
-	ft_isduplicat(ft_parssing(ac, av));
-	ft_fill_stack(ft_parssing(ac, av), &a);
-	if (is_sorted(a))
-		ft_error();
+	arr = NULL;
+	arr = ft_parssing(ac, av);
+	ft_fill_stack(arr, &a);
+	ft_check_is_sorted(a);
 	while (ac > 1)
 	{
 		str = get_next_line(0);

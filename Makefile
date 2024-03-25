@@ -10,7 +10,6 @@ FILES = mandatory/moves/push.c \
 		mandatory/function_utils/garbage_collector.c \
 		mandatory/function_utils/is_sorted.c \
 		mandatory/function_utils/linked_list_utils.c \
-		mandatory/function_utils/printList.c \
 		mandatory/function_utils/ft_split.c \
 		mandatory/function_utils/parssing_utils_1.c \
 		mandatory/function_utils/parssing_utils_2.c
@@ -35,16 +34,15 @@ OBJS_BONUS = $(FILES_BONUS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 CC = cc
 RM = rm -f
+
 $(NAME) : $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-# $(NAME_BONUS) : $(OBJS_BONUS)
-# 	$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
 all : $(NAME)
-# bonus : $(NAME_BONUS)
 
 bonus : $(OBJS_BONUS)
 	$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
+
 %.o : %.c includes/push_swap.h
 	$(CC) $(FLAGS) -c $< -o $@
 %.o : %.c includes/checker.h
@@ -57,13 +55,5 @@ fclean : clean
 	$(RM) $(NAME) $(NAME_BONUS)
 
 re : fclean all
-
-mk : re bonus
-	make clean
-	clear
-
-test: mk
-	@echo "Running visualization script..."
-	./visualizer-1_1.py $$(seq 0 100 | sort -R)
 
 .PHONY : clean

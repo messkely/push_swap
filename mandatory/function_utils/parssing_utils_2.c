@@ -6,7 +6,7 @@
 /*   By: messkely <messkely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:03:25 by messkely          #+#    #+#             */
-/*   Updated: 2024/03/20 22:43:20 by messkely         ###   ########.fr       */
+/*   Updated: 2024/03/21 01:27:41 by messkely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ long	ft_atoi(const char *str)
 	return (sign * res);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ptr;
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
 	ptr = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!ptr)
 		return (0);
@@ -59,6 +62,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[j])
 		ptr[i++] = s2[j++];
 	ptr[i] = '\0';
+	free(s1);
 	return (ptr);
 }
 
@@ -85,41 +89,42 @@ void	ft_isduplicat(char **str)
 	}
 }
 
-char	*ft_check_error(int ac, char **av, char *buff)
+void	ft_check_error(char *av)
 {
-	int		i;
 	int		j;
 
-	i = 1;
-	while (i < ac)
+	j = 0;
+	while (av[j])
 	{
-		if (!ft_isempty(av[i]))
-		{
-			j = 0;
-			while (av[i][j])
-			{
-				if (av[i][j] == '+' || av[i][j] == '-')
-					j++;
-				if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
-					ft_error();
-				j++;
-			}
-			buff = ft_strjoin(buff, av[i++]);
-			buff = ft_strjoin(buff, " ");
-		}
-		else
+		if (ft_isdigit(av[j]) && (av[j + 1] == '-' || av[j + 1] == '+'))
 			ft_error();
+		if (av[j] == '+' || av[j] == '-')
+			j++;
+		if (!ft_isdigit(av[j]) && av[j] != ' ')
+			ft_error();
+		j++;
 	}
-	return (buff);
 }
 
 char	**ft_parssing(int ac, char **av)
 {
 	char	*buff;
 	char	**res;
+	int		i;
 
-	buff = "";
-	buff = ft_check_error(ac, av, buff);
+	buff = NULL;
+	i = 1;
+	while (i < ac)
+	{
+		if (!ft_isempty(av[i]))
+		{
+			ft_check_error(av[i]);
+			buff = ft_strjoin(buff, av[i++]);
+			buff = ft_strjoin(buff, " ");
+		}
+		else
+			ft_error();
+	}
 	res = ft_split(buff, ' ');
 	return (free(buff), res);
 }
